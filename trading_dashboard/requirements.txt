@@ -1,0 +1,7 @@
+flask==3.0.0
+flask-socketio==5.3.6
+yfinance==0.2.31
+websocket-client==1.6.4
+eventlet==0.34.2
+python-engineio==4.8.1
+python-socketio==5.10.0

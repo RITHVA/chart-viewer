@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Dashboard</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <!-- Header with Grid Selector -->
+    <header class="dashboard-header">
+        <div class="header-left">
+            <h1>📊 Trading Dashboard</h1>
+        </div>
+        <div class="header-center">
+            <label for="grid-selector">Grid Layout:</label>
+            <select id="grid-selector">
+                <option value="1">1 Pane</option>
+                <option value="2">2 Panes</option>
+                <option value="4">4 Panes</option>
+                <option value="6">6 Panes</option>
+                <option value="8">8 Panes</option>
+            </select>
+        </div>
+        <div class="header-right">
+            <span class="connection-status" id="connection-status">Disconnected</span>
+        </div>
+    </header>
+
+    <!-- Main Grid Container -->
+    <main class="grid-container" id="grid-container">
+        <!-- Panes will be dynamically inserted here -->
+    </main>
+
+    <!-- Footer with TradingView Attribution -->
+    <footer class="dashboard-footer">
+        <p>Data by <a href="https://www.tradingview.com" target="_blank" rel="noopener noreferrer">TradingView</a></p>
+    </footer>
+
+    <!-- Lightweight Charts Library (Standalone Production Build) -->
+    <script src="https://unpkg.com/lightweight-charts@4.1.0/dist/lightweight-charts.standalone.production.js"></script>
+    
+    <!-- Socket.IO Client -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    
+    <!-- Main Application Script -->
+    <script type="module" src="/static/js/app.js"></script>
+</body>
+</html>
