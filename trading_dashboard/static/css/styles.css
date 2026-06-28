@@ -1,0 +1,311 @@
+/* CSS Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #1a1a2e;
+    --bg-secondary: #16213e;
+    --bg-pane: #0f0f1a;
+    --text-primary: #eaeaea;
+    --text-secondary: #a0a0a0;
+    --accent-blue: #4a9eff;
+    --accent-green: #00c853;
+    --accent-red: #ff5252;
+    --border-color: #2a2a4a;
+    --header-height: 60px;
+    --footer-height: 40px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Header Styles */
+.dashboard-header {
+    height: var(--header-height);
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    flex-shrink: 0;
+}
+
+.header-left h1 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.header-center {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-center label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+#grid-selector {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    min-width: 120px;
+}
+
+#grid-selector:hover {
+    border-color: var(--accent-blue);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.connection-status {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background-color: rgba(255, 82, 82, 0.2);
+    color: var(--accent-red);
+}
+
+.connection-status.connected {
+    background-color: rgba(0, 200, 83, 0.2);
+    color: var(--accent-green);
+}
+
+/* Main Grid Container */
+.grid-container {
+    flex: 1;
+    display: grid;
+    gap: 8px;
+    padding: 8px;
+    overflow: auto;
+}
+
+/* Grid Layout Configurations */
+.grid-container[data-columns="1"] {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.grid-container[data-columns="2"] {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.grid-container[data-columns="4"] {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.grid-container[data-columns="6"] {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.grid-container[data-columns="8"] {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+/* Chart Pane Styles */
+.chart-pane {
+    background-color: var(--bg-pane);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-width: 300px;
+    min-height: 250px;
+}
+
+.pane-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pane-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.pane-controls select {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    min-width: 100px;
+}
+
+.pane-controls select:hover {
+    border-color: var(--accent-blue);
+}
+
+.pane-controls button {
+    background-color: var(--accent-blue);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.pane-controls button:hover {
+    background-color: #3a8eef;
+}
+
+.ticker-display {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: var(--bg-primary);
+    min-width: 140px;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.ticker-display.flash-up {
+    background-color: rgba(0, 200, 83, 0.3);
+    color: var(--accent-green);
+}
+
+.ticker-display.flash-down {
+    background-color: rgba(255, 82, 82, 0.3);
+    color: var(--accent-red);
+}
+
+/* Chart Container */
+.chart-container {
+    flex: 1;
+    position: relative;
+    min-height: 200px;
+}
+
+.chart-container .tv-lightweight-charts {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Footer Styles */
+.dashboard-footer {
+    height: var(--footer-height);
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.dashboard-footer p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.dashboard-footer a {
+    color: var(--accent-blue);
+    text-decoration: none;
+}
+
+.dashboard-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .grid-container[data-columns="6"],
+    .grid-container[data-columns="8"] {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .pane-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .ticker-display {
+        width: 100%;
+        order: -1;
+    }
+}
+
+/* Loading State */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(26, 26, 46, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.loading-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border-color);
+    border-top-color: var(--accent-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
